@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rizky - Web Developer Portfolio</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Dancing+Script:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
+
+    <!-- Header -->
+    <header>
+      <div class="logo">Rizky's Portfolio</div>
+      <nav>
+        <a href="#home" class="active">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-text">
+        <h1 class="animate__animated animate__fadeInDown">I am Rizky</h1>
+        <p class="animate__animated animate__fadeInUp">
+          A professional web developer with expertise in creating modern,
+          responsive, and user-friendly websites.
+        </p>
+        <div class="hero-buttons animate__animated animate__fadeInUp">
+          <button class="btn btn-ripple">View Projects</button>
+          <button class="btn btn-ripple">Hire Me</button>
+        </div>
+        <div class="social-icons animate__animated animate__fadeInUp">
+          <a href="https://github.com/IkyyArt"><i class="bi bi-github"></i></a>
+          <a href="#"><i class="bi bi-linkedin"></i></a>
+          <a href="https://www.instagram.com/ikyyxiart/#"
+            ><i class="bi bi-instagram"></i
+          ></a>
+          <a href="https://www.tiktok.com/@ikyysketch"
+            ><i class="bi bi-tiktok"></i
+          ></a>
+          <a href="https://www.facebook.com/profile.php?id=61566375546468"
+            ><i class="bi bi-facebook"></i
+          ></a>
+          <a href="#"><i class="bi bi-twitter"></i></a>
+          <a href="#"><i class="bi bi-youtube"></i></a>
+        </div>
+      </div>
+      <div
+        class="profile-picture floating animate__animated animate__fadeInRight"
+      >
+        <img src="rizky.png" alt="Rizky" />
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+      <h2 class="animate__animated animate__fadeIn">About Me</h2>
+      <div class="about-card animate__animated animate__fadeInUp">
+        <div class="about-text">
+          <p>
+            Halo! Nama saya Rizky Delfa Ramadhani (Ikyy), seorang mahasiswa
+            Teknik Informatika di Universitas Dian Nuswantoro (Udinus) dan
+            seorang kreator konten. Saya berasal dari Semarang, dan pernah
+            bersekolah di SDN 006 Kalimantan Timur (Balikppapan), lalu pindah ke
+            Jawa Tengah di SDN Wonotingal Semarang. Setelah itu, saya
+            melanjutkan ke SMPN 11 Semarang dan kemudian ke SMKN Negeri 1
+            Semarang.
+          </p>
+          <p>
+            Saat ini, saya aktif sebagai freelance ilustrator, terutama dalam
+            menggambar karakter anime. Anda bisa melihat karya saya di Fiverr
+            dan menghubungi saya untuk berbagai proyek ilustrasi. Selain itu,
+            saya juga mengelola saluran YouTube untuk berbagi konten kreatif dan
+            tips seputar dunia desain dan karier kreatif.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+      <h2 class="animate__animated animate__fadeIn">Skills</h2>
+      <div class="skills-grid animate__animated animate__fadeInUp">
+        <div class="skill-card">
+          <i class="bi bi-code-square"></i>
+          <h3>Front-End Development</h3>
+          <p>HTML, CSS, JavaScript, React, Vue.js</p>
+          <div class="skill-level">
+            <div class="skill-progress" style="width: 90%"></div>
+          </div>
+        </div>
+        <div class="skill-card">
+          <i class="bi bi-server"></i>
+          <h3>Back-End Development</h3>
+          <p>Node.js, Express, MongoDB, MySQL</p>
+          <div class="skill-level">
+            <div class="skill-progress" style="width: 85%"></div>
+          </div>
+        </div>
+        <div class="skill-card">
+          <i class="bi bi-palette"></i>
+          <h3>UI/UX Design</h3>
+          <p>Figma, Adobe XD, Wireframing, Prototyping</p>
+          <div class="skill-level">
+            <div class="skill-progress" style="width: 80%"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+      <h2 class="animate__animated animate__fadeIn">Projects</h2>
+      <div class="projects-grid animate__animated animate__fadeInUp">
+        <div class="project-card tilt">
+          <a href="#" class="project-image-link">
+            <img src="RunnerGame.png" alt="Runner Game" class="project-image" />
+            <div class="project-overlay">
+              <h3>Runner Game</h3>
+              <p><strong>Status:</strong> In Development</p>
+              <button class="project-btn">View Details</button>
+            </div>
+          </a>
+        </div>
+        <div class="project-card tilt">
+          <a href="#" class="project-image-link">
+            <img src="stockln.jpg" alt="Stockln" class="project-image" />
+            <div class="project-overlay">
+              <h3>Stockln</h3>
+              <p><strong>Status:</strong> In Development</p>
+              <button class="project-btn">View Details</button>
+            </div>
+          </a>
+        </div>
+        <div class="project-card tilt">
+          <a href="#" class="project-image-link">
+            <img src="svgl-app.jpg" alt="Svgl.app" class="project-image" />
+            <div class="project-overlay">
+              <h3>Svgl.app</h3>
+              <p><strong>Role:</strong> Contributor</p>
+              <button class="project-btn">View Details</button>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <h2 class="animate__animated animate__fadeIn">Contact Me</h2>
+      <div class="contact-card animate__animated animate__fadeInUp">
+        <div class="contact-form">
+          <form>
+            <input type="text" placeholder="Your Name" required />
+            <input type="email" placeholder="Your Email" required />
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit" class="btn btn-ripple">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2025 Rizky. All rights reserved.</p>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-to-top">
+      <i class="bi bi-arrow-up"></i>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
