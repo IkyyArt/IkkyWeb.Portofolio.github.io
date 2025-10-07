@@ -349,6 +349,87 @@
         gap: 5px;
       }
 
+      /* Certificates Section */
+      .certificates {
+        background-color: var(--light-color);
+      }
+
+      .certificate-card {
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        margin-bottom: 30px;
+        height: 100%;
+        background-color: white;
+        cursor: pointer;
+      }
+
+      .certificate-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .certificate-img {
+        height: 200px;
+        width: 100%;
+        object-fit: cover;
+        background-color: #f8f9fa;
+      }
+
+      .certificate-content {
+        padding: 25px;
+      }
+
+      .certificate-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin: 15px 0;
+      }
+
+      .certificate-tag {
+        background-color: var(--light-color);
+        color: var(--dark-color);
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+      }
+
+      /* Modal for Certificate */
+      .certificate-modal .modal-content {
+        border-radius: 15px;
+        overflow: hidden;
+      }
+
+      .certificate-modal .modal-body {
+        padding: 0;
+        text-align: center;
+      }
+
+      .certificate-modal img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .pdf-viewer {
+        width: 100%;
+        height: 600px;
+        border: none;
+      }
+
+      .pdf-placeholder {
+        padding: 40px;
+        text-align: center;
+        background-color: #f8f9fa;
+      }
+
+      .pdf-placeholder i {
+        font-size: 4rem;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+      }
+
       /* Contact Section */
       .contact-form {
         background-color: white;
@@ -566,6 +647,10 @@
         .contact-form {
           padding: 20px;
         }
+
+        .pdf-viewer {
+          height: 400px;
+        }
       }
     </style>
   </head>
@@ -595,6 +680,9 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#projects">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#certificates">Certificates</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#contact">Contact</a>
@@ -863,11 +951,7 @@
           <!-- Project 3 -->
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="project-card fade-in">
-              <img
-                src="https://via.placeholder.com/400x200"
-                alt="Svgl.app"
-                class="project-img"
-              />
+              <img src="DELFASIMPLE.png" alt="Svgl.app" class="project-img" />
               <div class="project-content">
                 <h4>Svgl.app</h4>
                 <p>
@@ -881,7 +965,7 @@
                 </div>
                 <div class="project-actions">
                   <a
-                    href="https://ikyyart.github.io/Svgl.app/"
+                    href="https://ikyyart.github.io/DelfaBloxStore.Id.github.io/"
                     class="btn btn-primary"
                     target="_blank"
                   >
@@ -894,6 +978,183 @@
         </div>
       </div>
     </section>
+
+    <!-- Certificates Section -->
+    <section id="certificates" class="certificates">
+      <div class="container">
+        <div class="section-title fade-in">
+          <h2>My Certificates</h2>
+        </div>
+        <div class="row">
+          <!-- Certificate 1 - Sertifikat Lomba -->
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div
+              class="certificate-card fade-in"
+              data-bs-toggle="modal"
+              data-bs-target="#certificateModal1"
+            >
+              <img
+                src="SERTIFIKAT LOMBA.jpg"
+                alt="Sertifikat Lomba"
+                class="certificate-img"
+                onerror="this.src='https://via.placeholder.com/400x300?text=Sertifikat+Lomba'"
+              />
+              <div class="certificate-content">
+                <h4>Sertifikat Lomba</h4>
+                <p>
+                  Sertifikat penghargaan dari kompetisi atau lomba yang diikuti.
+                </p>
+                <div class="certificate-tags">
+                  <span class="certificate-tag">Competition</span>
+                  <span class="certificate-tag">Achievement</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Certificate 2 - Sertifikat DNCC -->
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div
+              class="certificate-card fade-in"
+              data-bs-toggle="modal"
+              data-bs-target="#certificateModal2"
+            >
+              <img
+                src="SERTIFIKAT DNCC ( BTNG )_page-0001.jpg"
+                alt="Sertifikat DNCC"
+                class="certificate-img"
+                onerror="this.src='https://via.placeholder.com/400x300?text=Sertifikat+DNCC'"
+              />
+              <div class="certificate-content">
+                <h4>Sertifikat DNCC</h4>
+                <p>
+                  Sertifikat dari program DNCC (Dian Nuswantoro Computer Club).
+                </p>
+                <div class="certificate-tags">
+                  <span class="certificate-tag">Programming</span>
+                  <span class="certificate-tag">DNCC</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Certificate 3 - Sertifikat Magang -->
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div
+              class="certificate-card fade-in"
+              data-bs-toggle="modal"
+              data-bs-target="#certificateModal3"
+            >
+              <img
+                src="SERTIFIKAT MAGANG TELKOM_page-0001.jpg"
+                alt="Sertifikat Magang Telkom"
+                class="certificate-img"
+                onerror="this.src='https://via.placeholder.com/400x300?text=Sertifikat+Magang'"
+              />
+              <div class="certificate-content">
+                <h4>Sertifikat Magang Telkom</h4>
+                <p>
+                  Sertifikat penyelesaian program magang di Telkom Indonesia.
+                </p>
+                <div class="certificate-tags">
+                  <span class="certificate-tag">Internship</span>
+                  <span class="certificate-tag">Telkom</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certificate Modals -->
+    <!-- Modal 1 - Sertifikat Lomba -->
+    <div
+      class="modal fade certificate-modal"
+      id="certificateModal1"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Sertifikat Lomba</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="SERTIFIKAT LOMBA.jpg"
+              alt="Sertifikat Lomba"
+              class="img-fluid"
+              onerror="this.src='https://via.placeholder.com/800x600?text=Sertifikat+Lomba+Tidak+Dapat+Dimuat'"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 2 - Sertifikat DNCC -->
+    <div
+      class="modal fade certificate-modal"
+      id="certificateModal2"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Sertifikat DNCC</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="SERTIFIKAT DNCC ( BTNG )_page-0001.jpg"
+              alt="Sertifikat DNCC"
+              class="img-fluid"
+              onerror="this.src='https://via.placeholder.com/800x600?text=Sertifikat+DNCC+Tidak+Dapat+Dimuat'"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 3 - Sertifikat Magang Telkom -->
+    <div
+      class="modal fade certificate-modal"
+      id="certificateModal3"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Sertifikat Magang Telkom</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="SERTIFIKAT MAGANG TELKOM_page-0001.jpg"
+              alt="Sertifikat Magang Telkom"
+              class="img-fluid"
+              onerror="this.src='https://via.placeholder.com/800x600?text=Sertifikat+Magang+Tidak+Dapat+Dimuat'"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Contact Section -->
     <section id="contact" class="bg-light">
@@ -1014,7 +1275,7 @@
           </div>
         </div>
         <div class="copyright">
-          <p>&copy; 2023 Rizky's Portfolio. All Rights Reserved.</p>
+          <p>&copy; 2024 Rizky's Portfolio. All Rights Reserved.</p>
         </div>
       </div>
     </footer>
@@ -1154,4 +1415,3 @@
     </script>
   </body>
 </html>
-8
