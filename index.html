@@ -1,556 +1,100 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rizky - Web Developer Portfolio</title>
-    <link rel="icon" type="image/x-icon" href="ChatGPT Image Oct 6, 2025, 01_26_27 PM.png" />
+    <title>Rizky - Modern Portfolio</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="ChatGPT Image Oct 6, 2025, 01_26_27 PM.png"
+    />
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <!-- Typed.js -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <!-- Bootstrap Icons -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
     />
+
     <style>
-      :root {
-        --primary-color: #6c63ff;
-        --secondary-color: #2f2e41;
-        --accent-color: #ff6584;
-        --light-color: #f7f7f7;
-        --dark-color: #2f2e41;
-        --text-color: #333;
-        --bg-color: #ffffff;
+      /* Custom Glassmorphism */
+      .glass {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
       }
 
+      .dark .glass {
+        background: rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      /* Smooth transitions */
       * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
       }
 
-      body {
-        font-family: "Poppins", sans-serif;
-        line-height: 1.6;
-        color: var(--text-color);
-        background-color: var(--bg-color);
-        overflow-x: hidden;
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
       }
 
-      html {
-        scroll-behavior: smooth;
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
       }
 
-      /* Header */
-      header {
-        background-color: white;
-        padding: 1.2rem 0;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease;
+      .dark ::-webkit-scrollbar-track {
+        background: #1a202c;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #6c63ff;
+        border-radius: 4px;
+      }
+
+      .dark ::-webkit-scrollbar-thumb {
+        background: #8b5cf6;
+      }
+
+      /* Particle canvas */
+      #particles-js {
         position: fixed;
         width: 100%;
+        height: 100%;
         top: 0;
-        z-index: 1000;
-      }
-
-      .navbar-brand {
-        font-weight: 700;
-        font-size: 1.5rem;
-        color: var(--secondary-color) !important;
-      }
-
-      .navbar-brand span {
-        color: var(--primary-color);
-      }
-
-      .nav-link {
-        color: var(--secondary-color) !important;
-        font-weight: 500;
-        margin: 0 10px;
-        transition: color 0.3s ease;
-        position: relative;
-      }
-
-      .nav-link:hover {
-        color: var(--primary-color) !important;
-      }
-
-      .nav-link::after {
-        content: "";
-        position: absolute;
-        width: 0;
-        height: 2px;
-        bottom: 0;
         left: 0;
-        background-color: var(--primary-color);
-        transition: width 0.3s ease;
-      }
-
-      .nav-link:hover::after {
-        width: 100%;
-      }
-
-      .nav-link.active {
-        color: var(--primary-color) !important;
-      }
-
-      .nav-link.active::after {
-        width: 100%;
-      }
-
-      /* Hero Section */
-      .hero {
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        padding: 150px 0 100px;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .hero::before {
-        content: "";
-        position: absolute;
-        top: -50%;
-        right: -10%;
-        width: 500px;
-        height: 500px;
-        border-radius: 50%;
-        background: rgba(108, 99, 255, 0.1);
-      }
-
-      .hero::after {
-        content: "";
-        position: absolute;
-        bottom: -30%;
-        left: -10%;
-        width: 400px;
-        height: 400px;
-        border-radius: 50%;
-        background: rgba(255, 101, 132, 0.1);
-      }
-
-      .hero-content {
-        position: relative;
-        z-index: 1;
-      }
-
-      .hero h1 {
-        font-size: 3.5rem;
-        font-weight: 700;
-        color: var(--secondary-color);
-        margin-bottom: 20px;
-        line-height: 1.2;
-      }
-
-      .hero h1 span {
-        color: var(--primary-color);
-        position: relative;
-      }
-
-      .hero h1 span::after {
-        content: "";
-        position: absolute;
-        bottom: 5px;
-        left: 0;
-        width: 100%;
-        height: 8px;
-        background-color: rgba(108, 99, 255, 0.2);
         z-index: -1;
+        pointer-events: none;
       }
 
-      .hero p {
-        font-size: 1.2rem;
-        color: #555;
-        max-width: 600px;
-        margin-bottom: 30px;
+      /* Floating animation */
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
       }
 
-      .hero-btns {
-        display: flex;
-        gap: 15px;
-        margin-top: 30px;
+      .floating {
+        animation: float 6s ease-in-out infinite;
       }
 
-      .btn-primary {
-        background-color: var(--primary-color);
-        border: none;
-        padding: 12px 30px;
-        font-weight: 500;
-        border-radius: 30px;
-        transition: all 0.3s ease;
-      }
-
-      .btn-primary:hover {
-        background-color: #5a52e0;
-        transform: translateY(-3px);
-        box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3);
-      }
-
-      .btn-outline {
-        background-color: transparent;
-        border: 2px solid var(--primary-color);
-        color: var(--primary-color);
-        padding: 12px 30px;
-        font-weight: 500;
-        border-radius: 30px;
-        transition: all 0.3s ease;
-      }
-
-      .btn-outline:hover {
-        background-color: var(--primary-color);
-        color: white;
-        transform: translateY(-3px);
-        box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3);
-      }
-
-      .hero-img {
-        position: relative;
-        z-index: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      /* Section Styling */
-      section {
-        padding: 100px 0;
-      }
-
-      .section-title {
-        text-align: center;
-        margin-bottom: 60px;
-        position: relative;
-      }
-
-      .section-title h2 {
-        font-size: 2.5rem;
-        font-weight: 700;
-        color: var(--secondary-color);
-        display: inline-block;
-        position: relative;
-      }
-
-      .section-title h2::after {
-        content: "";
-        position: absolute;
-        bottom: -10px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 80px;
-        height: 4px;
-        background-color: var(--primary-color);
-        border-radius: 2px;
-      }
-
-      /* About Section */
-      .about-content {
-        display: flex;
-        align-items: center;
-        gap: 40px;
-      }
-
-      .about-text {
-        flex: 1;
-      }
-
-      .about-img {
-        flex: 1;
-        text-align: center;
-      }
-
-      .about-img img {
-        max-width: 100%;
-        border-radius: 20px;
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-      }
-
-      .skills {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-top: 20px;
-      }
-
-      .skill-tag {
-        background-color: var(--light-color);
-        color: var(--dark-color);
-        padding: 8px 20px;
-        border-radius: 30px;
-        font-size: 0.9rem;
-        font-weight: 500;
-        transition: all 0.3s ease;
-      }
-
-      .skill-tag:hover {
-        background-color: var(--primary-color);
-        color: white;
-        transform: translateY(-3px);
-      }
-
-      /* Projects Section */
-      .projects {
-        background-color: var(--light-color);
-      }
-
-      .project-card {
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        margin-bottom: 30px;
-        height: 100%;
-        background-color: white;
-      }
-
-      .project-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-      }
-
-      .project-img {
-        height: 200px;
-        width: 100%;
-        object-fit: cover;
-      }
-
-      .project-content {
-        padding: 25px;
-      }
-
-      .project-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 5px;
-        margin: 15px 0;
-      }
-
-      .project-tag {
-        background-color: var(--light-color);
-        color: var(--dark-color);
-        padding: 5px 12px;
-        border-radius: 20px;
-        font-size: 0.8rem;
-      }
-
-      .project-actions {
-        display: flex;
-        gap: 10px;
-        margin-top: 20px;
-      }
-
-      .project-actions .btn {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 5px;
-      }
-
-      /* Certificates Section */
-      .certificates {
-        background-color: var(--light-color);
-      }
-
-      .certificate-card {
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        margin-bottom: 30px;
-        height: 100%;
-        background-color: white;
-        cursor: pointer;
-      }
-
-      .certificate-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-      }
-
-      .certificate-img {
-        height: 200px;
-        width: 100%;
-        object-fit: cover;
-        background-color: #f8f9fa;
-      }
-
-      .certificate-content {
-        padding: 25px;
-      }
-
-      .certificate-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 5px;
-        margin: 15px 0;
-      }
-
-      .certificate-tag {
-        background-color: var(--light-color);
-        color: var(--dark-color);
-        padding: 5px 12px;
-        border-radius: 20px;
-        font-size: 0.8rem;
-      }
-
-      /* Modal for Certificate */
-      .certificate-modal .modal-content {
-        border-radius: 15px;
-        overflow: hidden;
-      }
-
-      .certificate-modal .modal-body {
-        padding: 0;
-        text-align: center;
-      }
-
-      .certificate-modal img {
-        max-width: 100%;
-        height: auto;
-      }
-
-      .pdf-viewer {
-        width: 100%;
-        height: 600px;
-        border: none;
-      }
-
-      .pdf-placeholder {
-        padding: 40px;
-        text-align: center;
-        background-color: #f8f9fa;
-      }
-
-      .pdf-placeholder i {
-        font-size: 4rem;
-        color: var(--primary-color);
-        margin-bottom: 20px;
-      }
-
-      /* Contact Section */
-      .contact-form {
-        background-color: white;
-        padding: 40px;
-        border-radius: 15px;
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-      }
-
-      .form-control {
-        padding: 12px 15px;
-        margin-bottom: 20px;
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        font-family: "Poppins", sans-serif;
-        transition: all 0.3s ease;
-      }
-
-      .form-control:focus {
-        border-color: var(--primary-color);
-        box-shadow: 0 0 0 0.2rem rgba(108, 99, 255, 0.25);
-      }
-
-      .contact-info {
-        margin-top: 40px;
-      }
-
-      .contact-item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 25px;
-      }
-
-      .contact-icon {
-        width: 50px;
-        height: 50px;
-        background-color: var(--primary-color);
-        color: white;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-right: 15px;
-        font-size: 1.2rem;
-      }
-
-      /* Footer */
-      footer {
-        background-color: var(--secondary-color);
-        color: white;
-        padding: 60px 0 20px;
-      }
-
-      .footer-content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 40px;
-      }
-
-      .social-links {
-        display: flex;
-        gap: 15px;
-      }
-
-      .social-link {
-        width: 40px;
-        height: 40px;
-        background-color: rgba(255, 255, 255, 0.1);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        transition: all 0.3s ease;
-      }
-
-      .social-link:hover {
-        background-color: var(--primary-color);
-        color: white;
-        transform: translateY(-3px);
-      }
-
-      .copyright {
-        text-align: center;
-        padding-top: 20px;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      /* Back to Top Button */
-      .back-to-top {
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        width: 50px;
-        height: 50px;
-        background-color: var(--primary-color);
-        color: white;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.2rem;
-        cursor: pointer;
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-        z-index: 1000;
-        box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
-      }
-
-      .back-to-top.active {
-        opacity: 1;
-        visibility: visible;
-      }
-
-      /* Animasi halus untuk elemen */
+      /* Custom animations */
       .fade-in {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(20px);
         transition: opacity 0.6s ease, transform 0.6s ease;
       }
 
@@ -559,196 +103,238 @@
         transform: translateY(0);
       }
 
-      /* Profile Picture Animation */
-      .profile-picture {
-        width: 300px;
-        height: 300px;
-        border-radius: 50%;
-        overflow: hidden;
-        box-shadow: 0 0 20px rgba(108, 99, 255, 0.2);
-        transition: all 0.5s ease;
-        margin: 0 auto;
+      /* Hover effects */
+      .hover-lift {
+        transition: transform 0.3s ease;
       }
 
-      .profile-picture:hover {
-        transform: scale(1.05);
-        box-shadow: 0 0 30px rgba(108, 99, 255, 0.3);
+      .hover-lift:hover {
+        transform: translateY(-5px);
       }
 
-      .profile-picture img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s ease;
+      /* Gradient text */
+      .gradient-text {
+        background: linear-gradient(135deg, #6c63ff 0%, #ff6584 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
       }
 
-      .profile-picture:hover img {
-        transform: scale(1.1);
+      .dark .gradient-text {
+        background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
       }
 
-      /* Floating Animation for Profile */
-      @keyframes float {
-        0% {
-          transform: translateY(0px);
-        }
-        50% {
-          transform: translateY(-10px);
-        }
-        100% {
-          transform: translateY(0px);
-        }
-      }
-
-      .floating {
-        animation: float 5s ease-in-out infinite;
-      }
-
-      /* Responsive */
-      @media (max-width: 768px) {
-        .hero h1 {
-          font-size: 2.5rem;
-        }
-
-        .about-content {
-          flex-direction: column;
-        }
-
-        .section-title h2 {
-          font-size: 2rem;
-        }
-
-        .hero-btns {
-          flex-direction: column;
-          width: 100%;
-        }
-
-        .hero-btns .btn {
-          width: 100%;
-          text-align: center;
-        }
-
-        .footer-content {
-          flex-direction: column;
-          gap: 20px;
-          text-align: center;
-        }
-
-        .project-actions {
-          flex-direction: column;
-        }
-
-        .profile-picture {
-          width: 200px;
-          height: 200px;
-        }
-
-        .hero-img {
-          margin-top: 30px;
-        }
-
-        .contact-form {
-          padding: 20px;
-        }
-
-        .pdf-viewer {
-          height: 400px;
-        }
+      /* Project item transitions */
+      .project-item {
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       }
     </style>
+
+    <script>
+      // Tailwind config
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#6c63ff",
+              secondary: "#2f2e41",
+              accent: "#ff6584",
+              dark: {
+                950: "#0a0a0f",
+              },
+            },
+            animation: {
+              "float-slow": "float 8s ease-in-out infinite",
+              "pulse-glow": "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+            },
+          },
+        },
+      };
+    </script>
   </head>
-  <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="#">Riz<span>ky</span>'s Portfolio</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link active" href="#home">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#about">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#skills">Skills</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#projects">Projects</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#certificates">Certificates</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#contact">Contact</a>
-            </li>
-          </ul>
+
+  <body
+    class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300"
+  >
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-40 glass py-4">
+      <div class="container mx-auto px-6">
+        <div class="flex justify-between items-center">
+          <a href="#" class="text-2xl font-bold gradient-text"
+            >Riz<span>ky</span>'s Portfolio</a
+          >
+
+          <div class="hidden md:flex items-center space-x-8">
+            <a
+              href="#home"
+              class="nav-link hover:text-primary dark:hover:text-purple-400 transition"
+              >Home</a
+            >
+            <a
+              href="#about"
+              class="nav-link hover:text-primary dark:hover:text-purple-400 transition"
+              >About</a
+            >
+            <a
+              href="#projects"
+              class="nav-link hover:text-primary dark:hover:text-purple-400 transition"
+              >Projects</a
+            >
+            <a
+              href="#certificates"
+              class="nav-link hover:text-primary dark:hover:text-purple-400 transition"
+              >Certificates</a
+            >
+            <a
+              href="#contact"
+              class="nav-link hover:text-primary dark:hover:text-purple-400 transition"
+              >Contact</a
+            >
+
+            <!-- Theme Toggle di sebelah Contacts -->
+            <button
+              id="themeToggle"
+              class="p-2 rounded-lg glass hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+            >
+              <i class="bi bi-sun-fill text-yellow-500 dark:hidden text-lg"></i>
+              <i
+                class="bi bi-moon-fill text-gray-300 hidden dark:block text-lg"
+              ></i>
+            </button>
+          </div>
+
+          <!-- Mobile menu button -->
+          <div class="flex items-center space-x-4 md:hidden">
+            <!-- Theme Toggle untuk mobile -->
+            <button id="themeToggleMobile" class="p-2 rounded-lg glass">
+              <i class="bi bi-sun-fill text-yellow-500 dark:hidden"></i>
+              <i class="bi bi-moon-fill text-gray-300 hidden dark:block"></i>
+            </button>
+
+            <button id="mobileMenuBtn" class="p-2 rounded-lg glass">
+              <i class="bi bi-list text-xl"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden mt-4 space-y-4">
+          <a
+            href="#home"
+            class="block py-2 hover:text-primary dark:hover:text-purple-400 transition"
+            >Home</a
+          >
+          <a
+            href="#about"
+            class="block py-2 hover:text-primary dark:hover:text-purple-400 transition"
+            >About</a
+          >
+          <a
+            href="#projects"
+            class="block py-2 hover:text-primary dark:hover:text-purple-400 transition"
+            >Projects</a
+          >
+          <a
+            href="#certificates"
+            class="block py-2 hover:text-primary dark:hover:text-purple-400 transition"
+            >Certificates</a
+          >
+          <a
+            href="#contact"
+            class="block py-2 hover:text-primary dark:hover:text-purple-400 transition"
+            >Contact</a
+          >
         </div>
       </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-6">
-            <div class="hero-content fade-in">
-              <h1>I am <span>Rizky</span></h1>
-              <p>
-                A professional web developer with expertise in creating modern,
-                responsive, and user-friendly websites.
-              </p>
-              <div class="hero-btns">
-                <a href="#projects" class="btn btn-primary">View Projects</a>
-                <a href="#contact" class="btn btn-outline">Hire Me</a>
-              </div>
-              <div class="social-links mt-4">
-                <a
-                  href="https://github.com/IkyyArt"
-                  class="social-link"
-                  target="_blank"
-                >
-                  <i class="bi bi-github"></i>
-                </a>                               
-                <a href="https://wa.me/6288227789219" class="social-link">
-                  <i class="bi bi-whatsapp"></i>
-                </a>
-                <a
-                  href="https://www.instagram.com/ikyyxiart/#"
-                  class="social-link"
-                  target="_blank"
-                >
-                  <i class="bi bi-instagram"></i>
-                </a>
-                <a
-                  href="https://www.tiktok.com/@ikyysketch"
-                  class="social-link"
-                  target="_blank"
-                >
-                  <i class="bi bi-tiktok"></i>
-                </a>
-                <a
-                  href="https://www.facebook.com/profile.php?id=61566375546468"
-                  class="social-link"
-                  target="_blank"
-                >
-                  <i class="bi bi-facebook"></i>
-                </a>
-              </div>
+    <section id="home" class="min-h-screen flex items-center pt-20">
+      <div class="container mx-auto px-6 py-20">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div class="fade-in">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6">
+              Hi, I'm <span class="gradient-text">Rizky</span>
+            </h1>
+            <div class="text-2xl md:text-3xl mb-6">
+              <span id="typed" class="font-semibold"></span>
+            </div>
+            <p class="text-lg mb-8 opacity-90">
+              Professional web developer & illustrator creating modern,
+              responsive, and user-friendly digital experiences.
+            </p>
+
+            <div class="flex flex-wrap gap-4 mb-8">
+              <a
+                href="#projects"
+                class="px-8 py-3 bg-primary hover:bg-purple-700 text-white rounded-full font-semibold transition hover-lift shadow-lg"
+              >
+                View Projects
+              </a>
+              <a
+                href="#contact"
+                class="px-8 py-3 border-2 border-primary text-primary dark:text-purple-400 hover:bg-primary hover:text-white rounded-full font-semibold transition hover-lift"
+              >
+                Hire Me
+              </a>
+            </div>
+
+            <div class="flex space-x-4">
+              <a
+                href="https://github.com/IkyyArt"
+                target="_blank"
+                class="p-3 rounded-full glass hover-lift"
+              >
+                <i class="bi bi-github text-xl"></i>
+              </a>
+              <a
+                href="https://wa.me/6288227789219"
+                target="_blank"
+                class="p-3 rounded-full glass hover-lift"
+              >
+                <i class="bi bi-whatsapp text-xl"></i>
+              </a>
+              <a
+                href="https://www.instagram.com/ikyyxiart"
+                target="_blank"
+                class="p-3 rounded-full glass hover-lift"
+              >
+                <i class="bi bi-instagram text-xl"></i>
+              </a>
+              <a
+                href="https://www.tiktok.com/@ikyysketch"
+                target="_blank"
+                class="p-3 rounded-full glass hover-lift"
+              >
+                <i class="bi bi-tiktok text-xl"></i>
+              </a>
             </div>
           </div>
-          <div class="col-lg-6">
-            <div class="hero-img">
-              <div class="profile-picture floating fade-in">
-                <img src="ChatGPT Image Oct 6, 2025, 01_26_27 PM.png" alt="Rizky" />
+
+          <div class="flex justify-center fade-in">
+            <div class="relative">
+              <div
+                class="w-80 h-80 rounded-full overflow-hidden border-8 border-white/20 dark:border-gray-800/20 shadow-2xl floating"
+              >
+                <img
+                  src="ChatGPT Image Oct 6, 2025, 01_26_27 PM.png"
+                  alt="Rizky"
+                  class="w-full h-full object-cover"
+                />
               </div>
+              <div
+                class="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-primary to-accent rounded-full animate-pulse-glow"
+              ></div>
+              <div
+                class="absolute -bottom-4 -left-4 w-20 h-20 bg-gradient-to-tr from-accent to-primary rounded-full animate-pulse-glow animation-delay-1000"
+              ></div>
             </div>
           </div>
         </div>
@@ -756,580 +342,871 @@
     </section>
 
     <!-- About Section -->
-    <section id="about">
-      <div class="container">
-        <div class="section-title fade-in">
-          <h2>About Me</h2>
-        </div>
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="about-img fade-in"> <img src="ChatGPT Image Oct 6, 2025, 01_26_27 PM.png" alt="Rizky" height="380" /></div>
-          </div>
-          <div class="col-lg-6">
-            <div class="about-text fade-in">
-              <h3>Hello, I'm Rizky</h3>
-              <p>
-                Halo! Nama saya Rizky Delfa Ramadhani (Ikyy), seorang mahasiswa
-                Teknik Informatika di Universitas Dian Nuswantoro (Udinus) dan
-                seorang kreator konten. Saya berasal dari Semarang, dan pernah
-                bersekolah di SDN 006 Kalimantan Timur (Balikppapan), lalu
-                pindah ke Jawa Tengah di SDN Wonotingal Semarang. Setelah itu,
-                saya melanjutkan ke SMPN 11 Semarang dan kemudian ke SMKN Negeri
-                1 Semarang.
-              </p>
-              <p>
-                Saat ini, saya aktif sebagai freelance ilustrator, terutama
-                dalam menggambar karakter anime. Anda bisa melihat karya saya di
-                Fiverr dan menghubungi saya untuk berbagai proyek ilustrasi.
-                Selain itu, saya juga mengelola saluran YouTube untuk berbagi
-                konten kreatif dan tips seputar dunia desain dan karier kreatif.
-              </p>
-              <div class="skills">
-                <span class="skill-tag">Web Development</span>
-                <span class="skill-tag">UI/UX Design</span>
-                <span class="skill-tag">Illustration</span>
-                <span class="skill-tag">Content Creation</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <section id="about" class="py-20">
+      <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold text-center mb-16 gradient-text">
+          About Me
+        </h2>
 
-    <!-- Skills Section -->
-    <section id="skills" class="bg-light">
-      <div class="container">
-        <div class="section-title fade-in">
-          <h2>My Skills</h2>
-        </div>
-        <div class="row">
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="skill-card fade-in">
-              <div class="text-center mb-4">
-                <i
-                  class="bi bi-code-square"
-                  style="font-size: 3rem; color: var(--primary-color)"
-                ></i>
-              </div>
-              <h3 class="text-center">Front-End Development</h3>
-              <p class="text-center">HTML, CSS, JavaScript, React, Vue.js</p>
-              <div class="skill-level mt-3">
-                <div class="progress" style="height: 8px">
-                  <div
-                    class="progress-bar"
-                    role="progressbar"
-                    style="width: 90%; background-color: var(--primary-color)"
-                    aria-valuenow="90"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
-                </div>
-              </div>
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div class="fade-in">
+            <div class="rounded-2xl overflow-hidden shadow-2xl">
+              <img
+                src="ChatGPT Image Oct 6, 2025, 01_26_27 PM.png"
+                alt="Rizky"
+                class="w-full h-96 object-cover hover:scale-105 transition duration-500"
+              />
             </div>
           </div>
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="skill-card fade-in">
-              <div class="text-center mb-4">
-                <i
-                  class="bi bi-server"
-                  style="font-size: 3rem; color: var(--primary-color)"
-                ></i>
-              </div>
-              <h3 class="text-center">Back-End Development</h3>
-              <p class="text-center">Node.js, Express, MongoDB, MySQL</p>
-              <div class="skill-level mt-3">
-                <div class="progress" style="height: 8px">
-                  <div
-                    class="progress-bar"
-                    role="progressbar"
-                    style="width: 85%; background-color: var(--primary-color)"
-                    aria-valuenow="85"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="skill-card fade-in">
-              <div class="text-center mb-4">
-                <i
-                  class="bi bi-palette"
-                  style="font-size: 3rem; color: var(--primary-color)"
-                ></i>
-              </div>
-              <h3 class="text-center">UI/UX Design</h3>
-              <p class="text-center">
-                Figma, Adobe XD, Wireframing, Prototyping
+
+          <div class="fade-in">
+            <h3 class="text-3xl font-bold mb-6">Rizky Delfa Ramadhani</h3>
+            <div class="space-y-4 mb-8">
+              <p class="opacity-90">
+                Hello! I'm Rizky Delfa Ramadhani (Ikyy), an Informatics
+                Engineering student at Dian Nuswantoro University and a content
+                creator. I'm from Semarang and have diverse educational
+                background across Kalimantan and Java.
               </p>
-              <div class="skill-level mt-3">
-                <div class="progress" style="height: 8px">
-                  <div
-                    class="progress-bar"
-                    role="progressbar"
-                    style="width: 80%; background-color: var(--primary-color)"
-                    aria-valuenow="80"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
-                </div>
-              </div>
+              <p class="opacity-90">
+                Currently, I'm active as a freelance illustrator specializing in
+                anime character drawings. I also manage a YouTube channel
+                sharing creative content and design tips.
+              </p>
             </div>
+
+            <div class="flex flex-wrap gap-3 mb-8">
+              <span class="px-4 py-2 rounded-full glass text-sm font-medium"
+                >Web Development</span
+              >
+              <span class="px-4 py-2 rounded-full glass text-sm font-medium"
+                >UI/UX Design</span
+              >
+              <span class="px-4 py-2 rounded-full glass text-sm font-medium"
+                >Illustration</span
+              >
+              <span class="px-4 py-2 rounded-full glass text-sm font-medium"
+                >Content Creation</span
+              >
+              <span class="px-4 py-2 rounded-full glass text-sm font-medium"
+                >Frontend</span
+              >
+              <span class="px-4 py-2 rounded-full glass text-sm font-medium"
+                >Backend</span
+              >
+            </div>
+
+            <a
+              href="#contact"
+              class="inline-flex items-center text-primary dark:text-purple-400 font-semibold hover:underline"
+            >
+              Get in touch <i class="bi bi-arrow-right ml-2"></i>
+            </a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects">
-      <div class="container">
-        <div class="section-title fade-in">
-          <h2>My Projects</h2>
+    <section id="projects" class="py-20 bg-gray-50 dark:bg-gray-800/50">
+      <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold text-center mb-16 gradient-text">
+          My Projects
+        </h2>
+
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap justify-center gap-4 mb-12 fade-in">
+          <button
+            class="filter-btn active px-6 py-2 rounded-full bg-primary text-white font-semibold transition hover:bg-purple-700"
+            data-filter="all"
+          >
+            All Projects
+          </button>
+          <button
+            class="filter-btn px-6 py-2 rounded-full glass hover:bg-gray-100 dark:hover:bg-gray-800 font-semibold transition"
+            data-filter="2024"
+          >
+            2024 Projects
+          </button>
+          <button
+            class="filter-btn px-6 py-2 rounded-full glass hover:bg-gray-100 dark:hover:bg-gray-800 font-semibold transition"
+            data-filter="2025"
+          >
+            2025 Projects
+          </button>
         </div>
-        <div class="row">
-          <!-- Project 1 -->
-            <div class="col-lg-4 col-md-6 mb-4">
-            <div class="project-card fade-in">
-              <img src="Music.png" alt="Svgl.app" class="project-img" />
-              <div class="project-content">
-                <h4>Platform Music Favorit (2024)</h4>
-                <p>Music Platform yang menampilkan musik favorit</p>
-                <div class="project-tags">
-                  <span class="project-tag">Html</span>
-                  <span class="project-tag">Css</span>
-                  <span class="project-tag">Js</span>
-                  <span class="project-tag">Boostrap</span>
-                </div>
-                <div class="project-actions">
-                  <a
-                    href="https://ikyyart.github.io/MyFavoriteMusic.github.io/"
-                    class="btn btn-primary"
-                    target="_blank"
+
+        <!-- Projects Grid -->
+        <div class="projects-grid grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Project 2024 1 -->
+          <div class="project-item fade-in hover-lift" data-year="2024">
+            <div class="glass rounded-2xl overflow-hidden h-full shadow-xl">
+              <img
+                src="Music.png"
+                alt="Music Platform"
+                class="w-full h-48 object-cover"
+              />
+              <div class="p-6">
+                <div class="flex justify-between items-start mb-2">
+                  <h4 class="text-xl font-bold">Platform Music Favorit</h4>
+                  <span
+                    class="px-3 py-1 bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs rounded-full font-semibold"
+                    >2024</span
                   >
-                    <i class="bi bi-eye"></i> View Demo
-                  </a>
                 </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Project 2 -->
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="project-card fade-in">
-              <img src="RunnerGame.png" alt="Runner Game" class="project-img" />
-              <div class="project-content">
-                <h4>Runner Game (2024)</h4>
-                <p>
-                  Game platformer 2D dengan mekanik lari dan lompat yang
-                  menarik.
+                <p class="opacity-90 mb-4">
+                  Music platform featuring favorite tracks
                 </p>
-                <div class="project-tags">
-                  <span class="project-tag">C#</span>
-                  <span class="project-tag">Js</span>                  
-                </div>
-                <div class="project-actions">
-                  <a
-                    href="https://ikyyart.github.io/Runner-Game/"
-                    class="btn btn-primary"
-                    target="_blank"
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >HTML</span
                   >
-                    <i class="bi bi-eye"></i> View Demo
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Project 3 -->
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="project-card fade-in">
-              <img src="DelfaExtended.png" alt="Svgl.app" class="project-img" />
-              <div class="project-content">
-                <h4>DelfaBloxStore (2024)</h4>
-                <p>
-                  Toko Online yang menjual beberapa item game pada game
-                  robloxyang lebih extended
-                </p>
-                <div class="project-tags">
-                  <span class="project-tag">Html</span>
-                  <span class="project-tag">Css</span>
-                  <span class="project-tag">Js</span>
-                  <span class="project-tag">Boostrap</span>
-                </div>
-                <div class="project-actions">
-                  <a
-                    href="https://ikyyart.github.io/DelfaBloxStore.github.io/"
-                    class="btn btn-primary"
-                    target="_blank"
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >CSS</span
                   >
-                    <i class="bi bi-eye"></i> View Demo
-                  </a>
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >JS</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >Bootstrap</span
+                  >
                 </div>
+                <a
+                  href="https://ikyyart.github.io/MyFavoriteMusic.github.io/"
+                  target="_blank"
+                  class="inline-flex items-center justify-center w-full py-2 bg-primary hover:bg-purple-700 text-white rounded-lg transition"
+                >
+                  <i class="bi bi-eye mr-2"></i> View Demo
+                </a>
               </div>
             </div>
           </div>
 
-          <!-- Project 4 -->
-            <div class="col-lg-4 col-md-6 mb-4">
-            <div class="project-card fade-in">
-              <img src="DELFASIMPLE.png" alt="Svgl.app" class="project-img" />
-              <div class="project-content">
-                <h4>DelfaBloxStore (2025)</h4>
-                <p>
-                  Toko Online yang menjual beberapa item game pada game roblox
+          <!-- Project 2024 2 -->
+          <div class="project-item fade-in hover-lift" data-year="2024">
+            <div class="glass rounded-2xl overflow-hidden h-full shadow-xl">
+              <img
+                src="RunnerGame.png"
+                alt="Runner Game"
+                class="w-full h-48 object-cover"
+              />
+              <div class="p-6">
+                <div class="flex justify-between items-start mb-2">
+                  <h4 class="text-xl font-bold">Runner Game</h4>
+                  <span
+                    class="px-3 py-1 bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs rounded-full font-semibold"
+                    >2024</span
+                  >
+                </div>
+                <p class="opacity-90 mb-4">
+                  2D platformer game with running and jumping mechanics
                 </p>
-                <div class="project-tags">
-                  <span class="project-tag">Html</span>
-                  <span class="project-tag">Css</span>
-                  <span class="project-tag">Js</span>
-                  <span class="project-tag">Boostrap</span>
-                </div>
-                <div class="project-actions">
-                  <a
-                    href="https://ikyyart.github.io/DelfaBloxStore.Id.github.io/"
-                    class="btn btn-primary"
-                    target="_blank"
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >C#</span
                   >
-                    <i class="bi bi-eye"></i> View Demo
-                  </a>
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >JavaScript</span
+                  >
                 </div>
+                <a
+                  href="https://ikyyart.github.io/Runner-Game/"
+                  target="_blank"
+                  class="inline-flex items-center justify-center w-full py-2 bg-primary hover:bg-purple-700 text-white rounded-lg transition"
+                >
+                  <i class="bi bi-eye mr-2"></i> View Demo
+                </a>
               </div>
             </div>
           </div>
-          
-          <!---- Project 5 -->
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="project-card fade-in">
-              <img src="Catur.png" alt="Svgl.app" class="project-img" />
-              <div class="project-content">
-                <h4>Game Catur (2025)</h4>
-                <p>Game Catur Offlien berbasis website</p>
-                <div class="project-tags">
-                  <span class="project-tag">Html</span>
-                  <span class="project-tag">Css</span>
-                  <span class="project-tag">Js</span>
-                  <span class="project-tag">Boostrap</span>
-                </div>
-                <div class="project-actions">
-                  <a
-                    href="https://ikyyart.github.io/GameCatur.github.io/"
-                    class="btn btn-primary"
-                    target="_blank"
+
+          <!-- Project 2024 3 -->
+          <div class="project-item fade-in hover-lift" data-year="2024">
+            <div class="glass rounded-2xl overflow-hidden h-full shadow-xl">
+              <img
+                src="DelfaExtended.png"
+                alt="DelfaBloxStore Extended"
+                class="w-full h-48 object-cover"
+              />
+              <div class="p-6">
+                <div class="flex justify-between items-start mb-2">
+                  <h4 class="text-xl font-bold">DelfaBloxStore Extended</h4>
+                  <span
+                    class="px-3 py-1 bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs rounded-full font-semibold"
+                    >2024</span
                   >
-                    <i class="bi bi-eye"></i> View Demo
-                  </a>
                 </div>
+                <p class="opacity-90 mb-4">
+                  Online store for Roblox game items (extended version)
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >HTML</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >CSS</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >JS</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >Bootstrap</span
+                  >
+                </div>
+                <a
+                  href="https://ikyyart.github.io/DelfaBloxStore.github.io/"
+                  target="_blank"
+                  class="inline-flex items-center justify-center w-full py-2 bg-primary hover:bg-purple-700 text-white rounded-lg transition"
+                >
+                  <i class="bi bi-eye mr-2"></i> View Demo
+                </a>
               </div>
             </div>
           </div>
-          <!-- Project 6 -->
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="project-card fade-in">
+
+          <!-- Project 2024 4 -->
+          <div class="project-item fade-in hover-lift" data-year="2024">
+            <div class="glass rounded-2xl overflow-hidden h-full shadow-xl">
+              <img
+                src="DELFASIMPLE.png"
+                alt="DelfaBloxStore Simple"
+                class="w-full h-48 object-cover"
+              />
+              <div class="p-6">
+                <div class="flex justify-between items-start mb-2">
+                  <h4 class="text-xl font-bold">DelfaBloxStore Simple</h4>
+                  <span
+                    class="px-3 py-1 bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs rounded-full font-semibold"
+                    >2024</span
+                  >
+                </div>
+                <p class="opacity-90 mb-4">
+                  Simple online store for Roblox game items
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >HTML</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >CSS</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >JS</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >Bootstrap</span
+                  >
+                </div>
+                <a
+                  href="https://ikyyart.github.io/DelfaBloxStore.Id.github.io/"
+                  target="_blank"
+                  class="inline-flex items-center justify-center w-full py-2 bg-primary hover:bg-purple-700 text-white rounded-lg transition"
+                >
+                  <i class="bi bi-eye mr-2"></i> View Demo
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2025 1 -->
+          <div class="project-item fade-in hover-lift" data-year="2025">
+            <div class="glass rounded-2xl overflow-hidden h-full shadow-xl">
+              <img
+                src="Catur.png"
+                alt="Game Catur"
+                class="w-full h-48 object-cover"
+              />
+              <div class="p-6">
+                <div class="flex justify-between items-start mb-2">
+                  <h4 class="text-xl font-bold">Game Catur</h4>
+                  <span
+                    class="px-3 py-1 bg-green-500/10 text-green-600 dark:text-green-400 text-xs rounded-full font-semibold"
+                    >2025</span
+                  >
+                </div>
+                <p class="opacity-90 mb-4">Chess game offline website-based</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >HTML</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >CSS</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >JS</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >Bootstrap</span
+                  >
+                </div>
+                <a
+                  href="https://ikyyart.github.io/GameCatur.github.io/"
+                  target="_blank"
+                  class="inline-flex items-center justify-center w-full py-2 bg-primary hover:bg-purple-700 text-white rounded-lg transition"
+                >
+                  <i class="bi bi-eye mr-2"></i> View Demo
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2025 2 -->
+          <div class="project-item fade-in hover-lift" data-year="2025">
+            <div class="glass rounded-2xl overflow-hidden h-full shadow-xl">
               <img
                 src="De'Ngerowot.png"
-                alt="Farel Tako (Website Toko)"
-                class="project-img"
+                alt="De'Ngerowot"
+                class="w-full h-48 object-cover"
               />
-              <div class="project-content">
-                <h4>De'Ngerowot  (2025)</h4>
-                <p>
-                  Website Toko Online yang menjual berbagai macam produk
-                  kesehatan.
-                </p>
-                <div class="project-tags">
-                  <span class="project-tag">Html</span>
-                  <span class="project-tag">Css</span>
-                  <span class="project-tag">Js</span>
-                  <span class="project-tag">Boostrap</span>
-                </div>
-                <div class="project-actions">
-                  <a
-                    href="https://ikyyart.github.io/PawonUti.github.io/"
-                    class="btn btn-primary"
-                    target="_blank"
+              <div class="p-6">
+                <div class="flex justify-between items-start mb-2">
+                  <h4 class="text-xl font-bold">De'Ngerowot</h4>
+                  <span
+                    class="px-3 py-1 bg-green-500/10 text-green-600 dark:text-green-400 text-xs rounded-full font-semibold"
+                    >2025</span
                   >
-                    <i class="bi bi-eye"></i> View Demo
-                  </a>
                 </div>
+                <p class="opacity-90 mb-4">
+                  Online store selling various health products
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >HTML</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >CSS</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >JS</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >Bootstrap</span
+                  >
+                </div>
+                <a
+                  href="https://ikyyart.github.io/PawonUti.github.io/"
+                  target="_blank"
+                  class="inline-flex items-center justify-center w-full py-2 bg-primary hover:bg-purple-700 text-white rounded-lg transition"
+                >
+                  <i class="bi bi-eye mr-2"></i> View Demo
+                </a>
               </div>
             </div>
           </div>
 
-          <!-- Project 7 -->
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="project-card fade-in">
+          <!-- Project 2025 3 -->
+          <div class="project-item fade-in hover-lift" data-year="2025">
+            <div class="glass rounded-2xl overflow-hidden h-full shadow-xl">
               <img
                 src="Farel Tako (2).png"
-                alt="Farel Tako (Website Toko)"
-                class="project-img"
+                alt="Farel Tako"
+                class="w-full h-48 object-cover"
               />
-              <div class="project-content">
-                <h4>Farel Tako (2025)</h4>
-                <p>
-                  Website Toko Online yang menjual berbagai macam makanan
-                  kuliner.
+              <div class="p-6">
+                <div class="flex justify-between items-start mb-2">
+                  <h4 class="text-xl font-bold">Farel Tako</h4>
+                  <span
+                    class="px-3 py-1 bg-green-500/10 text-green-600 dark:text-green-400 text-xs rounded-full font-semibold"
+                    >2025</span
+                  >
+                </div>
+                <p class="opacity-90 mb-4">
+                  Online store selling various culinary foods
                 </p>
-                <div class="project-tags">
-                  <span class="project-tag">Html</span>
-                  <span class="project-tag">Css</span>
-                  <span class="project-tag">Js</span>
-                  <span class="project-tag">Boostrap</span>
-                </div>
-                <div class="project-actions">
-                  <a
-                    href="https://ikyyart.github.io/FarrelTako2.github.io/"
-                    class="btn btn-primary"
-                    target="_blank"
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >HTML</span
                   >
-                    <i class="bi bi-eye"></i> View Demo
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Project 8 -->
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="project-card fade-in">
-              <img src="Whislist.png" alt="Svgl.app" class="project-img" />
-              <div class="project-content">
-                <h4>Platfotm Whislist buat kebutuhan (2025)</h4>
-                <p>Whislist Platform buat kebutuhan favorit</p>
-                <div class="project-tags">
-                  <span class="project-tag">Html</span>
-                  <span class="project-tag">Css</span>
-                  <span class="project-tag">Js</span>
-                  <span class="project-tag">Boostrap</span>
-                  <span class="project-tag">Local Storage</span>
-                </div>
-                <div class="project-actions">
-                  <a
-                    href="https://ikyyart.github.io/Whislist.github.io/"
-                    class="btn btn-primary"
-                    target="_blank"
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >CSS</span
                   >
-                    <i class="bi bi-eye"></i> View Demo
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-            
-          <!-- Project 9 -->
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="project-card fade-in">
-              <img src="Study.png" alt="Svgl.app" class="project-img" />
-              <div class="project-content">
-                <h4>Platfotm My Study List (2025)</h4>
-                <p>My Study List Platform buat menaruh semua pelajaran</p>
-                <div class="project-tags">
-                  <span class="project-tag">Html</span>
-                  <span class="project-tag">Css</span>
-                  <span class="project-tag">Js</span>
-                  <span class="project-tag">Boostrap</span>
-                  <span class="project-tag">Local Storage</span>
-                </div>
-                <div class="project-actions">
-                  <a
-                    href="https://ikyyart.github.io/ListTugas.github.io/"
-                    class="btn btn-primary"
-                    target="_blank"
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >JS</span
                   >
-                    <i class="bi bi-eye"></i> View Demo
-                  </a>
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >Bootstrap</span
+                  >
                 </div>
+                <a
+                  href="https://ikyyart.github.io/FarrelTako2.github.io/"
+                  target="_blank"
+                  class="inline-flex items-center justify-center w-full py-2 bg-primary hover:bg-purple-700 text-white rounded-lg transition"
+                >
+                  <i class="bi bi-eye mr-2"></i> View Demo
+                </a>
               </div>
             </div>
           </div>
 
-          <!-- Project 10 -->
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="project-card fade-in">
-              <img src="FITNESS.png" alt="Svgl.app" class="project-img" />
-              <div class="project-content">
-                <h4>Platform FitProgress (2025)</h4>
-                <p>FitProgress untuk membuat anda semangat dan menambahkan beberapa list untuk dilakukan untuk menjaga tubuh menjadi sehat</p>
-                <div class="project-tags">
-                  <span class="project-tag">Html</span>
-                  <span class="project-tag">Css</span>
-                  <span class="project-tag">Js</span>
-                  <span class="project-tag">Boostrap</span>
-                  <span class="project-tag">Local Storage</span>
-                </div>
-                <div class="project-actions">
-                  <a
-                    href="https://ikyyart.github.io/FitProgress.github.io/"
-                    class="btn btn-primary"
-                    target="_blank"
+          <!-- Project 2025 4 -->
+          <div class="project-item fade-in hover-lift" data-year="2025">
+            <div class="glass rounded-2xl overflow-hidden h-full shadow-xl">
+              <img
+                src="Whislist.png"
+                alt="Wishlist Platform"
+                class="w-full h-48 object-cover"
+              />
+              <div class="p-6">
+                <div class="flex justify-between items-start mb-2">
+                  <h4 class="text-xl font-bold">Wishlist Platform</h4>
+                  <span
+                    class="px-3 py-1 bg-green-500/10 text-green-600 dark:text-green-400 text-xs rounded-full font-semibold"
+                    >2025</span
                   >
-                    <i class="bi bi-eye"></i> View Demo
-                  </a>
                 </div>
+                <p class="opacity-90 mb-4">
+                  Platform for saving favorite items and needs
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >HTML</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >CSS</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >JS</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >Bootstrap</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >Local Storage</span
+                  >
+                </div>
+                <a
+                  href="https://ikyyart.github.io/Whislist.github.io/"
+                  target="_blank"
+                  class="inline-flex items-center justify-center w-full py-2 bg-primary hover:bg-purple-700 text-white rounded-lg transition"
+                >
+                  <i class="bi bi-eye mr-2"></i> View Demo
+                </a>
               </div>
             </div>
           </div>
 
-          <!-- Project 11 -->
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="project-card fade-in">
-              <img src="Pre.png" alt="Svgl.app" class="project-img" />
-              <div class="project-content">
-                <h4>Templete Pre Wedding (2025)</h4>
-                <p>Templete Pre Wedding untuk memudahkan anda</p>
-                <div class="project-tags">
-                  <span class="project-tag">Html</span>
-                  <span class="project-tag">Css</span>
-                  <span class="project-tag">Js</span>
-                  <span class="project-tag">Boostrap</span>
-                </div>
-                <div class="project-actions">
-                  <a
-                    href="https://ikyyart.github.io/PreWedding.github.io/"
-                    class="btn btn-primary"
-                    target="_blank"
+          <!-- Project 2025 5 -->
+          <div class="project-item fade-in hover-lift" data-year="2025">
+            <div class="glass rounded-2xl overflow-hidden h-full shadow-xl">
+              <img
+                src="Study.png"
+                alt="Study List"
+                class="w-full h-48 object-cover"
+              />
+              <div class="p-6">
+                <div class="flex justify-between items-start mb-2">
+                  <h4 class="text-xl font-bold">My Study List</h4>
+                  <span
+                    class="px-3 py-1 bg-green-500/10 text-green-600 dark:text-green-400 text-xs rounded-full font-semibold"
+                    >2025</span
                   >
-                    <i class="bi bi-eye"></i> View Demo
-                  </a>
                 </div>
+                <p class="opacity-90 mb-4">
+                  Platform for organizing all study materials and lessons
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >HTML</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >CSS</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >JS</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >Bootstrap</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >Local Storage</span
+                  >
+                </div>
+                <a
+                  href="https://ikyyart.github.io/ListTugas.github.io/"
+                  target="_blank"
+                  class="inline-flex items-center justify-center w-full py-2 bg-primary hover:bg-purple-700 text-white rounded-lg transition"
+                >
+                  <i class="bi bi-eye mr-2"></i> View Demo
+                </a>
               </div>
             </div>
           </div>
 
-          <!-- Project 12 -->
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="project-card fade-in">
-              <img src="Momen.png" alt="Svgl.app" class="project-img" />
-              <div class="project-content">
-                <h4>Platform Momen Momen Special (2025)</h4>
-                <p>Momen Momen Special untuk mengenang momen momen yang kalian kangenkan</p>
-                <div class="project-tags">
-                  <span class="project-tag">Html</span>
-                  <span class="project-tag">Css</span>
-                  <span class="project-tag">Js</span>
-                  <span class="project-tag">Boostrap</span>
-                </div>
-                <div class="project-actions">
-                  <a
-                    href="https://ikyyart.github.io/MomenMomen.github.io/"
-                    class="btn btn-primary"
-                    target="_blank"
+          <!-- Project 2025 6 -->
+          <div class="project-item fade-in hover-lift" data-year="2025">
+            <div class="glass rounded-2xl overflow-hidden h-full shadow-xl">
+              <img
+                src="FITNESS.png"
+                alt="FitProgress"
+                class="w-full h-48 object-cover"
+              />
+              <div class="p-6">
+                <div class="flex justify-between items-start mb-2">
+                  <h4 class="text-xl font-bold">FitProgress</h4>
+                  <span
+                    class="px-3 py-1 bg-green-500/10 text-green-600 dark:text-green-400 text-xs rounded-full font-semibold"
+                    >2025</span
                   >
-                    <i class="bi bi-eye"></i> View Demo
-                  </a>
                 </div>
+                <p class="opacity-90 mb-4">
+                  Platform to stay motivated and track fitness progress
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >HTML</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >CSS</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >JS</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >Bootstrap</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >Local Storage</span
+                  >
+                </div>
+                <a
+                  href="https://ikyyart.github.io/FitProgress.github.io/"
+                  target="_blank"
+                  class="inline-flex items-center justify-center w-full py-2 bg-primary hover:bg-purple-700 text-white rounded-lg transition"
+                >
+                  <i class="bi bi-eye mr-2"></i> View Demo
+                </a>
               </div>
             </div>
           </div>
 
-          <!-- Project 13 -->
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="project-card fade-in">
-              <img src="Screenshot 2025-11-23 230752.png" alt="Svgl.app" class="project-img" />
-              <div class="project-content">
-                <h4>Platform FotoBooth (2025)</h4>
-                <p>Bisa Foto bareng orang kesayanganmu</p>
-                <div class="project-tags">
-                  <span class="project-tag">Html</span>
-                  <span class="project-tag">Css</span>
-                  <span class="project-tag">Js</span>
-                  <span class="project-tag">Boostrap</span>
-                </div>
-                <div class="project-actions">
-                  <a
-                    href="https://ikyyart.github.io/FotoBooth.github.io/"
-                    class="btn btn-primary"
-                    target="_blank"
+          <!-- Project 2025 7 -->
+          <div class="project-item fade-in hover-lift" data-year="2025">
+            <div class="glass rounded-2xl overflow-hidden h-full shadow-xl">
+              <img
+                src="Pre.png"
+                alt="Pre Wedding Template"
+                class="w-full h-48 object-cover"
+              />
+              <div class="p-6">
+                <div class="flex justify-between items-start mb-2">
+                  <h4 class="text-xl font-bold">Pre Wedding Template</h4>
+                  <span
+                    class="px-3 py-1 bg-green-500/10 text-green-600 dark:text-green-400 text-xs rounded-full font-semibold"
+                    >2025</span
                   >
-                    <i class="bi bi-eye"></i> View Demo
-                  </a>
                 </div>
+                <p class="opacity-90 mb-4">
+                  Template for pre-wedding websites to make it easier for you
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >HTML</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >CSS</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >JS</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >Bootstrap</span
+                  >
+                </div>
+                <a
+                  href="https://ikyyart.github.io/PreWedding.github.io/"
+                  target="_blank"
+                  class="inline-flex items-center justify-center w-full py-2 bg-primary hover:bg-purple-700 text-white rounded-lg transition"
+                >
+                  <i class="bi bi-eye mr-2"></i> View Demo
+                </a>
               </div>
             </div>
           </div>
-          <!-- Add more projects here -->
+
+          <!-- Project 2025 8 -->
+          <div class="project-item fade-in hover-lift" data-year="2025">
+            <div class="glass rounded-2xl overflow-hidden h-full shadow-xl">
+              <img
+                src="Momen.png"
+                alt="Special Moments"
+                class="w-full h-48 object-cover"
+              />
+              <div class="p-6">
+                <div class="flex justify-between items-start mb-2">
+                  <h4 class="text-xl font-bold">Special Moments</h4>
+                  <span
+                    class="px-3 py-1 bg-green-500/10 text-green-600 dark:text-green-400 text-xs rounded-full font-semibold"
+                    >2025</span
+                  >
+                </div>
+                <p class="opacity-90 mb-4">
+                  Platform to remember and cherish special moments
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >HTML</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >CSS</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >JS</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >Bootstrap</span
+                  >
+                </div>
+                <a
+                  href="https://ikyyart.github.io/MomenMomen.github.io/"
+                  target="_blank"
+                  class="inline-flex items-center justify-center w-full py-2 bg-primary hover:bg-purple-700 text-white rounded-lg transition"
+                >
+                  <i class="bi bi-eye mr-2"></i> View Demo
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2025 9 -->
+          <div class="project-item fade-in hover-lift" data-year="2025">
+            <div class="glass rounded-2xl overflow-hidden h-full shadow-xl">
+              <img
+                src="Screenshot 2025-11-23 230752.png"
+                alt="FotoBooth"
+                class="w-full h-48 object-cover"
+              />
+              <div class="p-6">
+                <div class="flex justify-between items-start mb-2">
+                  <h4 class="text-xl font-bold">FotoBooth</h4>
+                  <span
+                    class="px-3 py-1 bg-green-500/10 text-green-600 dark:text-green-400 text-xs rounded-full font-semibold"
+                    >2025</span
+                  >
+                </div>
+                <p class="opacity-90 mb-4">
+                  Take photos together with your loved ones
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >HTML</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >CSS</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >JS</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-primary/10 text-primary dark:text-purple-300 text-xs rounded-full"
+                    >Bootstrap</span
+                  >
+                </div>
+                <a
+                  href="https://ikyyart.github.io/FotoBooth.github.io/"
+                  target="_blank"
+                  class="inline-flex items-center justify-center w-full py-2 bg-primary hover:bg-purple-700 text-white rounded-lg transition"
+                >
+                  <i class="bi bi-eye mr-2"></i> View Demo
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project Counter -->
+        <div class="mt-12 text-center fade-in">
+          <div
+            class="inline-flex items-center gap-6 px-8 py-4 rounded-full glass"
+          >
+            <div class="text-center">
+              <div
+                class="text-2xl font-bold text-primary dark:text-purple-400"
+                id="totalCount"
+              >
+                13
+              </div>
+              <div class="text-sm opacity-80">Total Projects</div>
+            </div>
+            <div class="h-8 w-px bg-gray-300 dark:bg-gray-700"></div>
+            <div class="text-center">
+              <div
+                class="text-2xl font-bold text-blue-600 dark:text-blue-400"
+                id="count2024"
+              >
+                4
+              </div>
+              <div class="text-sm opacity-80">2024 Projects</div>
+            </div>
+            <div class="h-8 w-px bg-gray-300 dark:bg-gray-700"></div>
+            <div class="text-center">
+              <div
+                class="text-2xl font-bold text-green-600 dark:text-green-400"
+                id="count2025"
+              >
+                9
+              </div>
+              <div class="text-sm opacity-80">2025 Projects</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-12">
+          <a
+            href="https://github.com/IkyyArt"
+            target="_blank"
+            class="inline-flex items-center px-8 py-3 border-2 border-primary text-primary dark:text-purple-400 hover:bg-primary hover:text-white rounded-full font-semibold transition hover-lift"
+          >
+            <i class="bi bi-github mr-2"></i> View All Projects on GitHub
+          </a>
         </div>
       </div>
     </section>
 
     <!-- Certificates Section -->
-    <section id="certificates" class="certificates">
-      <div class="container">
-        <div class="section-title fade-in">
-          <h2>My Certificates</h2>
-        </div>
-        <div class="row">
-          <!-- Certificate 1 - Sertifikat Lomba -->
-          <div class="col-lg-4 col-md-6 mb-4">
+    <section id="certificates" class="py-20">
+      <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold text-center mb-16 gradient-text">
+          My Certificates
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Certificate 1 -->
+          <div class="fade-in hover-lift">
             <div
-              class="certificate-card fade-in"
-              data-bs-toggle="modal"
-              data-bs-target="#certificateModal1"
+              class="glass rounded-2xl overflow-hidden shadow-xl cursor-pointer"
+              onclick="openModal('cert1')"
             >
               <img
                 src="SERTIFIKAT LOMBA.jpg"
                 alt="Sertifikat Lomba"
-                class="certificate-img"
-                onerror="this.src='https://via.placeholder.com/400x300?text=Sertifikat+Lomba'"
+                class="w-full h-64 object-cover"
               />
-              <div class="certificate-content">
-                <h4>Sertifikat Lomba</h4>
-                <p>
-                  Sertifikat penghargaan dari kompetisi atau lomba yang diikuti.
+              <div class="p-6">
+                <h4 class="text-xl font-bold mb-2">Competition Certificate</h4>
+                <p class="opacity-90 mb-4">
+                  Award certificate from competitions
                 </p>
-                <div class="certificate-tags">
-                  <span class="certificate-tag">Competition</span>
-                  <span class="certificate-tag">Achievement</span>
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="px-3 py-1 bg-green-500/10 text-green-600 dark:text-green-400 text-xs rounded-full"
+                    >Achievement</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs rounded-full"
+                    >Competition</span
+                  >
                 </div>
               </div>
             </div>
           </div>
-          <!-- Certificate 2 - Sertifikat DNCC -->
-          <div class="col-lg-4 col-md-6 mb-4">
+
+          <!-- Certificate 2 -->
+          <div class="fade-in hover-lift">
             <div
-              class="certificate-card fade-in"
-              data-bs-toggle="modal"
-              data-bs-target="#certificateModal2"
+              class="glass rounded-2xl overflow-hidden shadow-xl cursor-pointer"
+              onclick="openModal('cert2')"
             >
               <img
                 src="SERTIFIKAT DNCC ( BTNG )_page-0001.jpg"
                 alt="Sertifikat DNCC"
-                class="certificate-img"
-                onerror="this.src='https://via.placeholder.com/400x300?text=Sertifikat+DNCC'"
+                class="w-full h-64 object-cover"
               />
-              <div class="certificate-content">
-                <h4>Sertifikat DNCC</h4>
-                <p>
-                  Sertifikat dari program DNCC (Dian Nuswantoro Computer Club).
+              <div class="p-6">
+                <h4 class="text-xl font-bold mb-2">DNCC Certificate</h4>
+                <p class="opacity-90 mb-4">
+                  Dian Nuswantoro Computer Club program
                 </p>
-                <div class="certificate-tags">
-                  <span class="certificate-tag">Programming</span>
-                  <span class="certificate-tag">DNCC</span>
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="px-3 py-1 bg-purple-500/10 text-purple-600 dark:text-purple-400 text-xs rounded-full"
+                    >Programming</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs rounded-full"
+                    >DNCC</span
+                  >
                 </div>
               </div>
             </div>
           </div>
-          <!-- Certificate 3 - Sertifikat Magang -->
-          <div class="col-lg-4 col-md-6 mb-4">
+
+          <!-- Certificate 3 -->
+          <div class="fade-in hover-lift">
             <div
-              class="certificate-card fade-in"
-              data-bs-toggle="modal"
-              data-bs-target="#certificateModal3"
+              class="glass rounded-2xl overflow-hidden shadow-xl cursor-pointer"
+              onclick="openModal('cert3')"
             >
               <img
                 src="SERTIFIKAT MAGANG TELKOM_page-0001.jpg"
                 alt="Sertifikat Magang Telkom"
-                class="certificate-img"
-                onerror="this.src='https://via.placeholder.com/400x300?text=Sertifikat+Magang'"
+                class="w-full h-64 object-cover"
               />
-              <div class="certificate-content">
-                <h4>Sertifikat Magang Telkom</h4>
-                <p>
-                  Sertifikat penyelesaian program magang di Telkom Indonesia.
+              <div class="p-6">
+                <h4 class="text-xl font-bold mb-2">Telkom Internship</h4>
+                <p class="opacity-90 mb-4">
+                  Internship completion at Telkom Indonesia
                 </p>
-                <div class="certificate-tags">
-                  <span class="certificate-tag">Internship</span>
-                  <span class="certificate-tag">Telkom</span>
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="px-3 py-1 bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 text-xs rounded-full"
+                    >Internship</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-red-500/10 text-red-600 dark:text-red-400 text-xs rounded-full"
+                    >Telkom</span
+                  >
                 </div>
               </div>
             </div>
@@ -1338,173 +1215,94 @@
       </div>
     </section>
 
-    <!-- Certificate Modals -->
-    <!-- Modal 1 - Sertifikat Lomba -->
-    <div
-      class="modal fade certificate-modal"
-      id="certificateModal1"
-      tabindex="-1"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Sertifikat Lomba</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <img
-              src="SERTIFIKAT LOMBA.jpg"
-              alt="Sertifikat Lomba"
-              class="img-fluid"
-              onerror="this.src='https://via.placeholder.com/800x600?text=Sertifikat+Lomba+Tidak+Dapat+Dimuat'"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Modal 2 - Sertifikat DNCC -->
-    <div
-      class="modal fade certificate-modal"
-      id="certificateModal2"
-      tabindex="-1"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Sertifikat DNCC</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <img
-              src="SERTIFIKAT DNCC ( BTNG )_page-0001.jpg"
-              alt="Sertifikat DNCC"
-              class="img-fluid"
-              onerror="this.src='https://via.placeholder.com/800x600?text=Sertifikat+DNCC+Tidak+Dapat+Dimuat'"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Modal 3 - Sertifikat Magang Telkom -->
-    <div
-      class="modal fade certificate-modal"
-      id="certificateModal3"
-      tabindex="-1"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Sertifikat Magang Telkom</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <img
-              src="SERTIFIKAT MAGANG TELKOM_page-0001.jpg"
-              alt="Sertifikat Magang Telkom"
-              class="img-fluid"
-              onerror="this.src='https://via.placeholder.com/800x600?text=Sertifikat+Magang+Tidak+Dapat+Dimuat'"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- Contact Section -->
-    <section id="contact" class="bg-light">
-      <div class="container">
-        <div class="section-title fade-in">
-          <h2>Contact Me</h2>
-        </div>
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
-            <div class="contact-form fade-in">
-              <form id="contactForm">
-                <div class="row">
-                  <div class="col-md-6">
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="name"
-                      placeholder="Your Name"
-                      required
-                    />
-                  </div>
-                  <div class="col-md-6">
-                    <input
-                      type="email"
-                      class="form-control"
-                      id="email"
-                      placeholder="Your Email"
-                      required
-                    />
-                  </div>
+    <section id="contact" class="py-20 bg-gray-50 dark:bg-gray-800/50">
+      <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold text-center mb-16 gradient-text">
+          Get In Touch
+        </h2>
+
+        <div class="max-w-2xl mx-auto">
+          <div class="glass rounded-2xl p-8 shadow-xl fade-in">
+            <form id="contactForm" class="space-y-6">
+              <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label class="block mb-2 font-medium">Name</label>
+                  <input
+                    type="text"
+                    class="w-full px-4 py-3 rounded-lg bg-white/50 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"
+                    placeholder="Your Name"
+                    required
+                  />
                 </div>
+                <div>
+                  <label class="block mb-2 font-medium">Email</label>
+                  <input
+                    type="email"
+                    class="w-full px-4 py-3 rounded-lg bg-white/50 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"
+                    placeholder="your@email.com"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label class="block mb-2 font-medium">Subject</label>
                 <input
                   type="text"
-                  class="form-control"
-                  id="subject"
+                  class="w-full px-4 py-3 rounded-lg bg-white/50 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"
                   placeholder="Subject"
                   required
                 />
+              </div>
+
+              <div>
+                <label class="block mb-2 font-medium">Message</label>
                 <textarea
-                  class="form-control"
-                  id="message"
+                  class="w-full px-4 py-3 rounded-lg bg-white/50 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"
                   rows="5"
-                  placeholder="Your Message"
+                  placeholder="Your message..."
                   required
                 ></textarea>
-                <button type="submit" class="btn btn-primary w-100 mt-3">
-                  <i class="bi bi-send"></i> Send Message
-                </button>
-              </form>
+              </div>
+
+              <button
+                type="submit"
+                class="w-full py-3 bg-primary hover:bg-purple-700 text-white font-semibold rounded-lg transition hover-lift"
+              >
+                <i class="bi bi-send mr-2"></i> Send Message
+              </button>
+            </form>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-6 mt-12">
+            <div class="fade-in text-center">
+              <div class="p-6 glass rounded-2xl">
+                <i
+                  class="bi bi-geo-alt text-3xl text-primary dark:text-purple-400 mb-4"
+                ></i>
+                <h4 class="font-bold mb-2">Location</h4>
+                <p class="opacity-90">Semarang, Indonesia</p>
+              </div>
             </div>
-            <div class="contact-info">
-              <div class="contact-item fade-in">
-                <div class="contact-icon">
-                  <i class="bi bi-geo-alt"></i>
-                </div>
-                <div>
-                  <h5>Location</h5>
-                  <p>Semarang, Indonesia</p>
-                </div>
+
+            <div class="fade-in text-center">
+              <div class="p-6 glass rounded-2xl">
+                <i
+                  class="bi bi-envelope text-3xl text-primary dark:text-purple-400 mb-4"
+                ></i>
+                <h4 class="font-bold mb-2">Email</h4>
+                <p class="opacity-90">rizkydelfa@example.com</p>
               </div>
-              <div class="contact-item fade-in">
-                <div class="contact-icon">
-                  <i class="bi bi-envelope"></i>
-                </div>
-                <div>
-                  <h5>Email</h5>
-                  <p>rizkydelfa@example.com</p>
-                </div>
-              </div>
-              <div class="contact-item fade-in">
-                <div class="contact-icon">
-                  <i class="bi bi-phone"></i>
-                </div>
-                <div>
-                  <h5>Phone</h5>
-                  <p>+6288227789219</p>
-                </div>
+            </div>
+
+            <div class="fade-in text-center">
+              <div class="p-6 glass rounded-2xl">
+                <i
+                  class="bi bi-phone text-3xl text-primary dark:text-purple-400 mb-4"
+                ></i>
+                <h4 class="font-bold mb-2">Phone</h4>
+                <p class="opacity-90">+6288227789219</p>
               </div>
             </div>
           </div>
@@ -1513,178 +1311,372 @@
     </section>
 
     <!-- Footer -->
-    <footer>
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-brand">
-            <h3>Riz<span>ky</span>'s Portfolio</h3>
-            <p>Creating amazing digital experiences</p>
+    <footer class="py-12 bg-gray-900 text-gray-300">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-6 md:mb-0">
+            <h3 class="text-2xl font-bold gradient-text">Riz<span>ky</span></h3>
+            <p class="mt-2 opacity-80">Creating amazing digital experiences</p>
           </div>
-          <div class="social-links">
+
+          <div class="flex space-x-4">
             <a
               href="https://github.com/IkyyArt"
-              class="social-link"
               target="_blank"
+              class="p-3 rounded-full bg-gray-800 hover:bg-gray-700 transition"
             >
               <i class="bi bi-github"></i>
-            </a>           
-            </a>           
-            <a href="https://wa.me/6288227789219" class="social-link">
+            </a>
+            <a
+              href="https://wa.me/6288227789219"
+              target="_blank"
+              class="p-3 rounded-full bg-gray-800 hover:bg-gray-700 transition"
+            >
               <i class="bi bi-whatsapp"></i>
             </a>
             <a
-              href="https://www.instagram.com/ikyyxiart/#"
-              class="social-link"
+              href="https://www.instagram.com/ikyyxiart"
               target="_blank"
+              class="p-3 rounded-full bg-gray-800 hover:bg-gray-700 transition"
             >
               <i class="bi bi-instagram"></i>
             </a>
             <a
               href="https://www.tiktok.com/@ikyysketch"
-              class="social-link"
               target="_blank"
+              class="p-3 rounded-full bg-gray-800 hover:bg-gray-700 transition"
             >
               <i class="bi bi-tiktok"></i>
             </a>
           </div>
         </div>
-        <div class="copyright">
+
+        <div class="text-center mt-8 pt-8 border-t border-gray-800">
           <p>&copy; 2024 Rizky's Portfolio. All Rights Reserved.</p>
         </div>
       </div>
     </footer>
 
-    <!-- Back to Top Button -->
-    <div class="back-to-top" id="backToTop">
-      <i class="bi bi-arrow-up"></i>
+    <!-- Certificate Modal -->
+    <div
+      id="certificateModal"
+      class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80"
+    >
+      <div class="relative max-w-4xl w-full">
+        <button
+          onclick="closeModal()"
+          class="absolute -top-10 right-0 text-white text-2xl hover:text-primary"
+        >
+          <i class="bi bi-x-circle"></i>
+        </button>
+        <div class="glass rounded-2xl overflow-hidden">
+          <img id="modalImage" src="" alt="Certificate" class="w-full h-auto" />
+        </div>
+      </div>
     </div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Back to Top -->
+    <button
+      id="backToTop"
+      class="fixed bottom-8 right-8 p-3 rounded-full glass shadow-lg hover-lift hidden"
+    >
+      <i class="bi bi-arrow-up"></i>
+    </button>
 
     <script>
-      // Back to Top Button
-      const backToTopButton = document.getElementById("backToTop");
-
-      window.addEventListener("scroll", () => {
-        if (window.pageYOffset > 300) {
-          backToTopButton.classList.add("active");
-        } else {
-          backToTopButton.classList.remove("active");
-        }
-      });
-
-      backToTopButton.addEventListener("click", () => {
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
+      // Initialize Typed.js
+      document.addEventListener("DOMContentLoaded", function () {
+        const typed = new Typed("#typed", {
+          strings: [
+            "Web Developer",
+            "UI/UX Designer",
+            "Illustrator",
+            "Content Creator",
+            "Freelancer",
+          ],
+          typeSpeed: 50,
+          backSpeed: 30,
+          loop: true,
+          backDelay: 2000,
         });
-      });
 
-      // Smooth Scrolling for Navigation Links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-
-          const targetId = this.getAttribute("href");
-          if (targetId === "#") return;
-
-          const targetElement = document.querySelector(targetId);
-          if (targetElement) {
-            window.scrollTo({
-              top: targetElement.offsetTop - 70,
-              behavior: "smooth",
-            });
-          }
-        });
-      });
-
-      // Navbar background on scroll
-      window.addEventListener("scroll", function () {
-        const navbar = document.querySelector(".navbar");
-        if (window.scrollY > 50) {
-          navbar.style.backgroundColor = "rgba(255, 255, 255, 0.95)";
-          navbar.style.padding = "0.8rem 0";
-          navbar.style.boxShadow = "0 5px 15px rgba(0, 0, 0, 0.1)";
-        } else {
-          navbar.style.backgroundColor = "white";
-          navbar.style.padding = "1.2rem 0";
-          navbar.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.1)";
+        // Initialize Particles.js dengan optimasi performa
+        if (typeof particlesJS !== "undefined") {
+          particlesJS("particles-js", {
+            particles: {
+              number: {
+                value: 40, // Jumlah dikurangi untuk performa
+                density: {
+                  enable: true,
+                  value_area: 800,
+                },
+              },
+              color: {
+                value: "#6c63ff",
+              },
+              shape: {
+                type: "circle",
+              },
+              opacity: {
+                value: 0.5,
+                random: true,
+              },
+              size: {
+                value: 3,
+                random: true,
+              },
+              line_linked: {
+                enable: true,
+                distance: 150,
+                color: "#6c63ff",
+                opacity: 0.2,
+                width: 1,
+              },
+              move: {
+                enable: true,
+                speed: 2,
+                direction: "none",
+                random: true,
+                straight: false,
+                out_mode: "out",
+                bounce: false,
+              },
+            },
+            interactivity: {
+              detect_on: "canvas",
+              events: {
+                onhover: {
+                  enable: false, // Dinonaktifkan untuk performa
+                },
+                onclick: {
+                  enable: false,
+                },
+                resize: true,
+              },
+            },
+            retina_detect: true,
+          });
         }
-      });
 
-      // Fade in animation on scroll
-      const fadeElements = document.querySelectorAll(".fade-in");
+        // Fungsi untuk toggle theme
+        function toggleTheme() {
+          document.documentElement.classList.toggle("dark");
+          localStorage.setItem(
+            "theme",
+            document.documentElement.classList.contains("dark")
+              ? "dark"
+              : "light"
+          );
+        }
 
-      const fadeInObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
+        // Theme toggle untuk desktop (di navbar sebelah contacts)
+        const themeToggle = document.getElementById("themeToggle");
+        if (themeToggle) {
+          themeToggle.addEventListener("click", toggleTheme);
+        }
+
+        // Theme toggle untuk mobile
+        const themeToggleMobile = document.getElementById("themeToggleMobile");
+        if (themeToggleMobile) {
+          themeToggleMobile.addEventListener("click", toggleTheme);
+        }
+
+        // Mobile menu
+        const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
+        if (mobileMenuBtn) {
+          mobileMenuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+          });
+        }
+
+        // Smooth scroll untuk navigation links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href");
+            if (targetId === "#") return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: "smooth",
+              });
+
+              // Tutup mobile menu jika terbuka
+              if (mobileMenu) {
+                mobileMenu.classList.add("hidden");
+              }
             }
           });
-        },
-        {
-          threshold: 0.1,
+        });
+
+        // Back to top
+        const backToTop = document.getElementById("backToTop");
+        window.addEventListener("scroll", () => {
+          if (window.pageYOffset > 300) {
+            backToTop.classList.remove("hidden");
+          } else {
+            backToTop.classList.add("hidden");
+          }
+        });
+
+        if (backToTop) {
+          backToTop.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          });
         }
-      );
 
-      fadeElements.forEach((element) => {
-        fadeInObserver.observe(element);
-      });
+        // Fade in animation on scroll
+        const fadeElements = document.querySelectorAll(".fade-in");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
 
-      // Contact Form Submission to WhatsApp
-      document
-        .getElementById("contactForm")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
+        fadeElements.forEach((el) => observer.observe(el));
 
-          const name = document.getElementById("name").value;
-          const email = document.getElementById("email").value;
-          const subject = document.getElementById("subject").value;
-          const message = document.getElementById("message").value;
+        // Contact form to WhatsApp
+        const contactForm = document.getElementById("contactForm");
+        if (contactForm) {
+          contactForm.addEventListener("submit", function (e) {
+            e.preventDefault();
 
-          // Format pesan untuk WhatsApp
-          const whatsappMessage = `Halo Rizky, saya ${name} (${email}).\n\nSubjek: ${subject}\n\nPesan: ${message}`;
+            const name = this.querySelector('input[type="text"]').value;
+            const email = this.querySelector('input[type="email"]').value;
+            const subject =
+              this.querySelectorAll('input[type="text"]')[1].value;
+            const message = this.querySelector("textarea").value;
 
-          // Encode pesan untuk URL
-          const encodedMessage = encodeURIComponent(whatsappMessage);
+            const whatsappMessage = `Halo Rizky, saya ${name} (${email}).%0ASubjek: ${subject}%0A%0APesan: ${message}`;
 
-          // Nomor WhatsApp (ganti dengan nomor Anda)
-          const phoneNumber = "6281234567890";
+            window.open(
+              `https://wa.me/6288227789219?text=${whatsappMessage}`,
+              "_blank"
+            );
+            this.reset();
 
-          // Redirect ke WhatsApp
-          window.open(
-            `https://wa.me/${phoneNumber}?text=${encodedMessage}`,
-            "_blank"
-          );
+            // Tampilkan pesan sukses
+            alert("Opening WhatsApp... Please send your message there!");
+          });
+        }
 
-          // Reset form
-          this.reset();
+        // Active nav link on scroll
+        const sections = document.querySelectorAll("section");
+        const navLinks = document.querySelectorAll(".nav-link");
+
+        window.addEventListener("scroll", () => {
+          let current = "";
+
+          sections.forEach((section) => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+
+            if (scrollY >= sectionTop - 100) {
+              current = section.getAttribute("id");
+            }
+          });
+
+          navLinks.forEach((link) => {
+            link.classList.remove("text-primary", "dark:text-purple-400");
+            if (link.getAttribute("href") === `#${current}`) {
+              link.classList.add("text-primary", "dark:text-purple-400");
+            }
+          });
         });
 
-      // Active navigation link
-      const sections = document.querySelectorAll("section");
-      const navLinks = document.querySelectorAll(".nav-link");
+        // PROJECT FILTER SYSTEM
+        const filterButtons = document.querySelectorAll(".filter-btn");
+        const projectItems = document.querySelectorAll(".project-item");
 
-      window.addEventListener("scroll", () => {
-        let current = "";
+        // Count projects per year
+        const count2024 =
+          document.querySelectorAll('[data-year="2024"]').length;
+        const count2025 =
+          document.querySelectorAll('[data-year="2025"]').length;
+        const total = count2024 + count2025;
 
-        sections.forEach((section) => {
-          const sectionTop = section.offsetTop;
-          const sectionHeight = section.clientHeight;
+        // Update counter display
+        document.getElementById("totalCount").textContent = total;
+        document.getElementById("count2024").textContent = count2024;
+        document.getElementById("count2025").textContent = count2025;
 
-          if (scrollY >= sectionTop - 100) {
-            current = section.getAttribute("id");
+        // Filter functionality
+        filterButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            // Update active button
+            filterButtons.forEach((btn) => {
+              btn.classList.remove("active", "bg-primary", "text-white");
+              btn.classList.add("glass");
+            });
+            button.classList.add("active", "bg-primary", "text-white");
+            button.classList.remove("glass");
+
+            // Filter projects
+            const filter = button.getAttribute("data-filter");
+
+            projectItems.forEach((item) => {
+              if (
+                filter === "all" ||
+                item.getAttribute("data-year") === filter
+              ) {
+                item.style.display = "block";
+                setTimeout(() => {
+                  item.style.opacity = "1";
+                  item.style.transform = "scale(1)";
+                }, 10);
+              } else {
+                item.style.opacity = "0";
+                item.style.transform = "scale(0.8)";
+                setTimeout(() => {
+                  item.style.display = "none";
+                }, 300);
+              }
+            });
+          });
+        });
+
+        // Certificate modal
+        window.openModal = function (certId) {
+          const modal = document.getElementById("certificateModal");
+          const img = document.getElementById("modalImage");
+
+          let imageSrc = "";
+          switch (certId) {
+            case "cert1":
+              imageSrc = "SERTIFIKAT LOMBA.jpg";
+              break;
+            case "cert2":
+              imageSrc = "SERTIFIKAT DNCC ( BTNG )_page-0001.jpg";
+              break;
+            case "cert3":
+              imageSrc = "SERTIFIKAT MAGANG TELKOM_page-0001.jpg";
+              break;
           }
-        });
 
-        navLinks.forEach((link) => {
-          link.classList.remove("active");
-          if (link.getAttribute("href") === `#${current}`) {
-            link.classList.add("active");
-          }
-        });
+          img.src = imageSrc;
+          modal.classList.remove("hidden");
+          modal.classList.add("flex");
+        };
+
+        window.closeModal = function () {
+          const modal = document.getElementById("certificateModal");
+          modal.classList.add("hidden");
+          modal.classList.remove("flex");
+        };
+
+        // Cek tema yang disimpan
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "dark") {
+          document.documentElement.classList.add("dark");
+        }
       });
     </script>
   </body>
